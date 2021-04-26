@@ -1,6 +1,21 @@
 import React from 'react'
-import styles from './styles.module.css'
+import Accordion from "./components/accordion";
+import './styles.scss'
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+const ReactAccordion = ({items = [], className}) => {
+    return (
+        <div className={"rs-accordion " + (className ?? '')}>
+            {
+                items.map((item, key) =>
+                    <Accordion
+                        itemKey={key}
+                        title={item.title}
+                        content={item.caption}
+                    />
+                )
+            }
+        </div>
+    )
+};
+
+export default ReactAccordion;
